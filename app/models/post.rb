@@ -1,17 +1,7 @@
 class Post < ApplicationRecord
   validates :title, presence: true
 
-  STATUSES = [:draft, :published, :banned]
-
-  validates :status, inclusion: { in: Post::STATUSES }
-
-  scope :draft, -> { where(status: 'draft') }
-  scope :published, -> { where(status: 'published') }
-  scope :banned, -> { where(status: 'banned') }
-
-  def banned?
-    status == 'banned'
-  end
+  enum status: { draft: 0, published: 1, banned: 13, in_review: 534 }
 
   def to_s
     title
