@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   validates :title, presence: true
 
-  enum status: { draft: 0, published: 1, banned: 13, in_review: 534 }
+  enum status: { draft: 'draft', published: 'published', banned: 'banned' }, _default: 'draft'
 
   def to_s
     title
